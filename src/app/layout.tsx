@@ -30,6 +30,9 @@ export default function RootLayout({
       >
         <Header />
         {children}
+        <footer className="py-8 text-gray-500 text-center">
+          Job Board &copy; {new Date().getFullYear()} All rights reserved
+        </footer>
       </body>
     </html>
   );
