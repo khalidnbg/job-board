@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
+import { AuthKitProvider } from "@workos-inc/authkit-nextjs/components";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,7 +30,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Header />
-        {children}
+        <AuthKitProvider>{children}</AuthKitProvider>
         <footer className="py-8 text-gray-500 text-center">
           Job Board &copy; {new Date().getFullYear()} All rights reserved
         </footer>
