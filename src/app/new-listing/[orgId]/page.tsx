@@ -1,3 +1,5 @@
+import JobForm from "@/app/components/JobForm";
+import "@radix-ui/themes/styles.css";
 import { withAuth } from "@workos-inc/authkit-nextjs";
 import { WorkOS } from "@workos-inc/node";
 
@@ -21,9 +23,5 @@ export default async function NewListingForOrgPage(props: PageProps) {
 
   if (!hasAccess) return "no access";
 
-  return (
-    <form action={""} className="container mt-6">
-      <input type="text" className="border p-2" placeholder="job title" />
-    </form>
-  );
+  return <JobForm />;
 }
