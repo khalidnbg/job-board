@@ -23,5 +23,5 @@ export default async function NewListingForOrgPage(props: PageProps) {
 
   if (!hasAccess) return "no access";
 
-  return <JobForm />;
+  return <JobForm orgId={orgId} />;
 }
