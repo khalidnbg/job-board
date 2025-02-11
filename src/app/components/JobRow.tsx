@@ -23,8 +23,8 @@ export default function JobRow({ jobDoc }: { jobDoc: Job }) {
               <div className="text-gray-500 text-sm">{jobDoc.orgName}</div>
               <div className="font-bold mb-1 text-lg">{jobDoc.title}</div>
               <div className="text-gray-400 text-sm">
-                {jobDoc.remote} &middot; {jobDoc.country}, {jobDoc.state},
-                {jobDoc.city} &middot; {jobDoc.type}
+                {jobDoc.remote} &middot; {jobDoc.country}, {jobDoc.city}{" "}
+                &middot; {jobDoc.type}
               </div>
             </div>
 
