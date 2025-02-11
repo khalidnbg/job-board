@@ -3,20 +3,24 @@ import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button } from "@radix-ui/themes";
 import Image from "next/image";
-import { ChangeEvent, useEffect, useRef, useState } from "react";
+import { ChangeEvent, useRef, useState } from "react";
 
 export default function ImageUpload({
   name,
   icon,
+  defaultValue = "",
 }: {
   name: string;
   icon: IconDefinition;
+  defaultValue: string;
 }) {
   const fileInRef = useRef<HTMLInputElement>(null);
   //   const [file, setFile] = useState<File | null>(null);
   const [isUploading, setIsUploading] = useState(false);
   const [isImageLoading, setIsImageLoading] = useState(false);
-  const [url, setUrl] = useState("");
+  const [url, setUrl] = useState(defaultValue);
+
+  console.log(defaultValue);
 
   //   useEffect(() => {
   //     if (file) {
@@ -73,7 +77,7 @@ export default function ImageUpload({
             width={1024}
             height={1024}
             alt="uploaded image"
-            onLoadingComplete={() => setIsImageLoading(false)}
+            onLoad={() => setIsImageLoading(false)}
             className="w-auto h-auto max-w-24 max-h-24"
           />
         )}

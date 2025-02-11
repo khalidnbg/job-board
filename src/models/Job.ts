@@ -1,4 +1,3 @@
-import { timeStamp } from "console";
 import { model, models, Schema } from "mongoose";
 
 export type Job = {
@@ -11,6 +10,9 @@ export type Job = {
   country: string;
   state: string;
   city: string;
+  countryId: string;
+  stateId: string;
+  cityId: string;
   jobIcon: string;
   orgId: string;
   contactPhoto: string;
@@ -32,6 +34,9 @@ const JobSchema = new Schema(
     country: { type: String, required: true },
     state: { type: String, required: true },
     city: { type: String, required: true },
+    countryId: { type: String, required: true },
+    stateId: { type: String, required: true },
+    cityId: { type: String, required: true },
     jobIcon: { type: String },
     orgId: { type: String, required: true },
     contactPhoto: { type: String },

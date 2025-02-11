@@ -1,5 +1,4 @@
 import JobForm from "@/app/components/JobForm";
-import "@radix-ui/themes/styles.css";
 import { withAuth } from "@workos-inc/authkit-nextjs";
 import { WorkOS } from "@workos-inc/node";
 
