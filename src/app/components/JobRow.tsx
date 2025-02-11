@@ -1,11 +1,10 @@
-"use client";
-
 import type { Job } from "@/models/Job";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import TimeAgo from "react-timeago";
+import TimeAgo from "./TimeAgo";
+import Link from "next/link";
 
-export default function JobRow({ jobDoc }: { jobDoc: Job }) {
+export default async function JobRow({ jobDoc }: { jobDoc: Job }) {
   return (
     <>
       <div className="bg-white p-4 rounded-lg shadow-sm relative">
@@ -22,15 +21,34 @@ export default function JobRow({ jobDoc }: { jobDoc: Job }) {
             <div className="grow">
               <div className="text-gray-500 text-sm">{jobDoc.orgName}</div>
               <div className="font-bold mb-1 text-lg">{jobDoc.title}</div>
-              <div className="text-gray-400 text-sm">
+              <div className="text-gray-400 text-sm capitalize">
                 {jobDoc.remote} &middot; {jobDoc.country}, {jobDoc.city}{" "}
-                &middot; {jobDoc.type}
+                &middot; {jobDoc.type}-time
+                {jobDoc?.isAdmin && (
+                  <>
+                    {" "}
+                    &middot;{" "}
+                    <Link
+                      className="text-green-400"
+                      href={"/jobs/edit/" + jobDoc._id}
+                    >
+                      Edit
+                    </Link>{" "}
+                    &middot;{" "}
+                    <Link
+                      className="text-red-400"
+                      href={"/jobs/edit/" + jobDoc._id}
+                    >
+                      Delete
+                    </Link>
+                  </>
+                )}
               </div>
             </div>
 
             {jobDoc.createdAt && (
               <div className="content-end text-gray-500 text-sm">
-                <TimeAgo date={jobDoc.createdAt} />
+                <TimeAgo createdAt={jobDoc.createdAt} />
               </div>
             )}
           </div>
