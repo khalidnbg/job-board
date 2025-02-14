@@ -22,7 +22,14 @@ export default async function JobRow({ jobDoc }: { jobDoc: Job }) {
 
           <div className="grow sm:flex">
             <div className="grow">
-              <div className="text-gray-500 text-sm">{jobDoc.orgName}</div>
+              <div>
+                <Link
+                  href={"/jobs/" + jobDoc.orgId}
+                  className="text-gray-500 text-sm"
+                >
+                  {jobDoc.orgName}
+                </Link>
+              </div>
               <div className="font-bold mb-1 text-lg">{jobDoc.title}</div>
               <div className="text-gray-400 text-sm capitalize">
                 {jobDoc.remote} &middot; {jobDoc.country}, {jobDoc.city}{" "}
