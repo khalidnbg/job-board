@@ -25,12 +25,15 @@ export default async function JobRow({ jobDoc }: { jobDoc: Job }) {
               <div>
                 <Link
                   href={"/jobs/" + jobDoc.orgId}
-                  className="text-gray-500 text-sm"
+                  className="text-gray-500 text-sm hover:underline"
                 >
                   {jobDoc.orgName}
                 </Link>
               </div>
-              <div className="font-bold mb-1 text-lg">{jobDoc.title}</div>
+              <Link href={"/show/" + jobDoc._id} className="hover:underline">
+                <div className="font-bold mb-1 text-lg">{jobDoc.title}</div>
+              </Link>
+
               <div className="text-gray-400 text-sm capitalize">
                 {jobDoc.remote} &middot; {jobDoc.country}, {jobDoc.city}{" "}
                 &middot; {jobDoc.type}-time
