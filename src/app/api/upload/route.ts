@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
       groupId: "bfcf2139-c86b-4c40-b1d3-86d9cbec34b4",
     });
 
-    const fileUrl = `https://${process.env.NEXT_PUBLIC_GATEWAY_URL}/files/${uploadData.IpfsHash}`;
+    const fileUrl = `https://${process.env.NEXT_PUBLIC_GATEWAY_PINATA_URL}/ipfs/${uploadData.IpfsHash}`;
 
     return NextResponse.json(fileUrl, { status: 200 });
   } catch (e) {

@@ -1,8 +1,11 @@
-import type { Job } from "@/models/Job";
+"use client";
+
+import { JobModel, type Job } from "@/models/Job";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import TimeAgo from "./TimeAgo";
 import Link from "next/link";
+import axios from "axios";
 
 export default async function JobRow({ jobDoc }: { jobDoc: Job }) {
   return (
@@ -35,12 +38,16 @@ export default async function JobRow({ jobDoc }: { jobDoc: Job }) {
                       Edit
                     </Link>{" "}
                     &middot;{" "}
-                    <Link
+                    <button
+                      type="button"
+                      onClick={async () => {
+                        await axios.delete("/api/jobs?id=" + jobDoc._id);
+                        window.location.reload();
+                      }}
                       className="text-red-400"
-                      href={"/jobs/edit/" + jobDoc._id}
                     >
                       Delete
-                    </Link>
+                    </button>
                   </>
                 )}
               </div>
